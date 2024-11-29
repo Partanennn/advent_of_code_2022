@@ -24,12 +24,27 @@ fetch(`https://adventofcode.com/2022/day/${day}/input`, {
         const lose = {
             A: 'Z', // ROCK - SCISSORS
             B: 'X', // PAPER - ROCK
-            C: 'Z', // SCISSORS - ROCK
+            C: 'Y', // SCISSORS - PAPER
         };
         const shapeScore = {
             X: 1,
             Y: 2,
             Z: 3,
+        };
+
+        // Z = WIN 6
+        // Y = DRAW 3
+        // X = LOSE
+        const hacks = {
+            'A Z': 8,
+            'A Y': 4,
+            'A X': 3,
+            'B Z': 9,
+            'B Y': 5,
+            'B X': 1,
+            'C Z': 7,
+            'C Y': 6,
+            'C X': 3,
         };
         var myTotalPoints = 0;
 
@@ -69,6 +84,7 @@ fetch(`https://adventofcode.com/2022/day/${day}/input`, {
                 mySelection,
                 myTotalPoints,
             });
+            // myTotalPoints += hacks[row];
         });
 
         console.log(myTotalPoints);
